@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ETC 599 – AI for Master Learners | Northern Arizona University</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --nau-navy: #003466;
+      --nau-navy-dark: #001a33;
       --nau-gold: #ffcb45;
-      --nau-light: #f5f7fb;
-      --text-main: #1c1f23;
-      --text-muted: #5b6470;
+      --bg-light: #f5f7fb;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --card-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
     }
 
     * {
@@ -21,10 +28,11 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
+      font-family: 'Roboto', sans-serif;
       background-color: #ffffff;
-      line-height: 1.6;
+      color: var(--text-main);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     a {
@@ -37,11 +45,10 @@
       display: block;
     }
 
-    /* Layout */
     .container {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0 1.25rem;
+      padding: 0 1.5rem;
     }
 
     /* Header / Nav */
@@ -50,105 +57,118 @@
       top: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(90deg, var(--nau-navy), #011b34);
+      height: 64px;
+      background: var(--nau-navy);
       color: #ffffff;
       z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
     }
 
     .nav {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 1.25rem;
     }
 
     .nav-left {
       display: flex;
       flex-direction: column;
-      gap: 0.1rem;
+      gap: 2px;
     }
 
     .logo-main {
-      font-weight: 700;
-      letter-spacing: 0.03em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
       font-size: 0.9rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .logo-sub {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       opacity: 0.9;
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 1rem;
       font-size: 0.85rem;
     }
 
     .nav-links a {
-      padding: 0.35rem 0.5rem;
+      padding: 0.3rem 0.55rem;
       border-radius: 999px;
       transition: background 0.2s ease, color 0.2s ease;
     }
 
     .nav-links a:hover {
-      background: rgba(255, 203, 69, 0.12);
-      color: var(--nau-gold);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .nav-cta {
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
       background: var(--nau-gold);
       color: #1a1300;
       font-weight: 600;
-      font-size: 0.8rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     }
 
     .nav-cta:hover {
-      filter: brightness(1.07);
+      filter: brightness(1.06);
     }
 
-    /* Hero */
-    main {
-      margin-top: 70px;
-    }
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 0.3rem;
+        gap: 0.35rem;
+      }
 
-    #hero {
-      background: radial-gradient(circle at top left, rgba(255, 203, 69, 0.16), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(0, 52, 102, 0.12), transparent 55%),
-        var(--nau-light);
-      padding: 3.5rem 0 3rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 2.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-        align-items: center;
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--nau-navy);
-      margin-bottom: 0.75rem;
+    main {
+      margin-top: 64px;
     }
 
-    .eyebrow-pill {
+    /* HERO */
+    #hero {
+      background:
+        radial-gradient(circle at top left, rgba(255, 203, 69, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.4), transparent 55%),
+        linear-gradient(135deg, var(--nau-navy-dark), #00274f);
+      color: #ffffff;
+      padding: 4rem 0 4.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      opacity: 0.95;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-dot {
       width: 8px;
       height: 8px;
       border-radius: 999px;
@@ -156,196 +176,215 @@
     }
 
     .hero-title {
-      font-size: 2rem;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-      color: #10151b;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.7rem;
+      line-height: 1.18;
+      font-weight: 800;
+      margin-bottom: 1rem;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
       .hero-title {
-        font-size: 2.4rem;
+        font-size: 3rem;
       }
     }
 
     .hero-subtitle {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      max-width: 34rem;
-      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      max-width: 36rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.6rem;
     }
 
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.78rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.8rem;
     }
 
     .badge {
-      padding: 0.3rem 0.6rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 999px;
-      background: rgba(0, 52, 102, 0.08);
-      color: var(--nau-navy);
-      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(3, 7, 18, 0.18);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
       align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 0.9rem;
     }
 
-    .btn-primary {
-      background: var(--nau-navy);
-      color: #ffffff;
-      padding: 0.75rem 1.4rem;
+    .btn-hero {
+      display: inline-block;
+      background: var(--nau-gold);
+      color: #1a1300;
+      padding: 0.85rem 1.8rem;
       border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
-      background: #012a4e;
+    .btn-hero:hover {
+      filter: brightness(1.06);
     }
 
     .btn-ghost {
       font-size: 0.85rem;
-      color: var(--nau-navy);
-      font-weight: 500;
-      padding: 0.5rem 0.75rem;
+      color: #e5e7eb;
+      padding: 0.55rem 0.9rem;
       border-radius: 999px;
-      border: 1px solid rgba(0, 52, 102, 0.2);
-      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.8);
     }
 
     .hero-note {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-
-    .hero-card {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: var(--nau-navy);
-    }
-
-    .hero-list {
-      list-style: none;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .hero-list li::before {
-      content: "✔";
-      color: var(--nau-gold);
-      margin-right: 0.4rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      color: rgba(226, 232, 240, 0.92);
+      max-width: 34rem;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem 1rem;
-      margin-top: 1rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      gap: 0.5rem 1rem;
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: rgba(226, 232, 240, 0.9);
     }
 
     .hero-meta span {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.35rem;
     }
 
-    .dot {
-      width: 4px;
-      height: 4px;
+    .hero-meta-dot {
+      width: 3px;
+      height: 3px;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(148, 163, 184, 0.9);
     }
 
-    /* Generic section styles */
+    /* FEATURE CARDS under hero */
+    .feature-wrapper {
+      background: #f3f4f6;
+      padding: 0 0 4rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 1.6rem;
+      margin-top: -3rem; /* overlap hero */
+    }
+
+    @media (min-width: 900px) {
+      .feature-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.6rem 1.4rem;
+      border-bottom: 4px solid var(--nau-gold);
+      box-shadow: var(--card-shadow);
+    }
+
+    .feature-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--nau-navy);
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Generic sections */
     section {
-      padding: 3rem 0;
+      padding: 3.25rem 0;
     }
 
     section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.35rem;
-      color: #10151b;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      color: #111827;
+      text-align: left;
     }
 
     section p.section-intro {
       font-size: 0.95rem;
       color: var(--text-muted);
-      max-width: 40rem;
-      margin-bottom: 1.75rem;
+      max-width: 42rem;
+      margin-bottom: 1.8rem;
     }
 
-    /* Learn section */
+    /* About */
+    #about {
+      background: #ffffff;
+    }
+
+    /* Learn */
     #learn {
       background: #ffffff;
     }
 
     .learn-grid {
       display: grid;
-      gap: 1.25rem;
+      gap: 1.2rem;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
       .learn-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     .learn-card {
-      background: var(--nau-light);
-      border-radius: 0.85rem;
-      padding: 1rem 1.1rem;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 1.05rem 1.2rem;
+      border: 1px solid rgba(15, 23, 42, 0.05);
       font-size: 0.88rem;
       color: var(--text-muted);
     }
 
     .learn-card strong {
       display: block;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
       color: var(--nau-navy);
-      font-size: 0.92rem;
+      font-size: 0.93rem;
     }
 
-    /* Who section */
+    /* Who */
+    #who {
+      background: #ffffff;
+    }
+
     .pill-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.55rem;
     }
 
     .pill {
-      padding: 0.35rem 0.6rem;
+      padding: 0.35rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(0, 52, 102, 0.18);
+      border: 1px solid rgba(15, 23, 42, 0.16);
       font-size: 0.8rem;
       color: var(--text-muted);
       background: #ffffff;
@@ -353,15 +392,15 @@
 
     /* Modules */
     #modules {
-      background: var(--nau-light);
+      background: var(--bg-light);
     }
 
     .modules-grid {
       display: grid;
-      gap: 1.5rem;
+      gap: 1.6rem;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
       .modules-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -369,25 +408,25 @@
 
     .module-card {
       background: #ffffff;
-      border-radius: 0.9rem;
-      padding: 1.25rem 1.2rem;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      border-radius: 14px;
+      padding: 1.25rem 1.25rem;
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
       font-size: 0.88rem;
     }
 
     .module-tag {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       color: var(--nau-navy);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .module-title {
       font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: #10151b;
+      margin-bottom: 0.4rem;
+      color: #111827;
     }
 
     .module-list {
@@ -425,24 +464,25 @@
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      font-size: 2.5rem;
-      font-weight: 600;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+      font-size: 2.6rem;
+      font-weight: 700;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
     }
 
     .instructor-name {
       font-weight: 600;
       margin-bottom: 0.25rem;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .instructor-role {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
     }
 
     .instructor-contact {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
     }
 
     .instructor-contact a {
@@ -452,7 +492,7 @@
 
     /* FAQ */
     #faq {
-      background: var(--nau-light);
+      background: var(--bg-light);
     }
 
     .faq-grid {
@@ -462,16 +502,16 @@
 
     .faq-item {
       background: #ffffff;
-      border-radius: 0.85rem;
-      padding: 0.9rem 1rem;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 12px;
+      padding: 0.95rem 1.05rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
       font-size: 0.86rem;
     }
 
     .faq-q {
       font-weight: 600;
       margin-bottom: 0.25rem;
-      color: #10151b;
+      color: #111827;
     }
 
     .faq-a {
@@ -480,40 +520,41 @@
 
     /* Enroll */
     #enroll {
-      background: #011b34;
+      background: #001322;
       color: #ffffff;
       text-align: center;
     }
 
     #enroll h2 {
-      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.7rem;
+      margin-bottom: 0.4rem;
     }
 
     #enroll p.section-intro {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(226, 232, 240, 0.9);
       margin-left: auto;
       margin-right: auto;
     }
 
     .enroll-actions {
-      margin-top: 1.5rem;
+      margin-top: 1.6rem;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.9rem;
       align-items: center;
       justify-content: center;
     }
 
     .btn-gold {
+      display: inline-block;
       background: var(--nau-gold);
       color: #1a1300;
-      padding: 0.8rem 1.6rem;
+      padding: 0.85rem 1.9rem;
       border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
     }
 
     .btn-gold:hover {
@@ -522,38 +563,25 @@
 
     .enroll-note {
       font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(226, 232, 240, 0.86);
+      max-width: 34rem;
     }
 
     footer {
-      background: #000b16;
-      color: rgba(255, 255, 255, 0.7);
+      background: #020617;
+      color: rgba(255, 255, 255, 0.75);
       font-size: 0.78rem;
       padding: 0.9rem 0;
       text-align: center;
     }
-
-    /* Small screens nav tweak */
-    @media (max-width: 640px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-    }
   </style>
 </head>
-
 <body>
+  <!-- NAV -->
   <header>
-    <div class="nav container">
+    <div class="container nav">
       <div class="nav-left">
-        <div class="logo-main">ETC 599 – AI for Master Learners</div>
+        <div class="logo-main">ETC 599 – AI FOR MASTER LEARNERS</div>
         <div class="logo-sub">Northern Arizona University · College of Education</div>
       </div>
       <nav class="nav-links">
@@ -563,123 +591,161 @@
         <a href="#modules">Modules</a>
         <a href="#instructor">Instructor</a>
         <a href="#faq">FAQ</a>
-        <a href="#enroll" class="nav-cta">Join Interest List</a>
+        <a href="mailto:Chih-Hsiung.Tu@nau.edu?subject=ETC599%20Interest%20List" class="nav-cta">Join Interest List</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- HERO -->
     <section id="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="eyebrow-pill"></span> NAU · Graduate-Level Course Open to All Learners</div>
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-eyebrow">
+            <span class="hero-dot"></span>
+            Graduate &amp; Professional Learners · 3-Credit Graduate Course
+          </div>
           <h1 class="hero-title">AI that finally makes sense—for students, educators, parents, and professionals.</h1>
           <p class="hero-subtitle">
-            ETC 599 is a project-based course that takes you from curious beginner to confident, ethical, human-in-the-loop AI user. Learn how to work with tools like ChatGPT to support real work, real learning, and real life.
+            ETC 599 is a project-based course that takes you from curious beginner to confident, ethical,
+            human-in-the-loop AI user. Learn how to work with tools like ChatGPT to support real work,
+            real learning, and real life.
           </p>
+
           <div class="hero-badges">
             <span class="badge">Hands-on &amp; project-based</span>
             <span class="badge">No coding required</span>
             <span class="badge">Ethics &amp; critical thinking built in</span>
           </div>
+
           <div class="hero-actions">
-            <a href="#enroll" class="btn-primary">Join the Interest List</a>
+            <a href="mailto:Chih-Hsiung.Tu@nau.edu?subject=ETC599%20Interest%20List" class="btn-hero">
+              Enroll / Join Interest List
+            </a>
             <a href="#learn" class="btn-ghost">See what you'll learn →</a>
           </div>
-          <p class="hero-note">Open to undergraduates, graduate students, educators, parents, and working professionals—no technical background needed.</p>
+
+          <p class="hero-note">
+            Open to graduate students, educators, parents, and working professionals—no technical background required.
+          </p>
+
           <div class="hero-meta">
             <span>📅 Jan 1 – Mar 3, 2026</span>
-            <span class="dot"></span>
+            <span class="hero-meta-dot"></span>
             <span>🎓 3 credits</span>
-            <span class="dot"></span>
-            <span>📍 NAU · Flagstaff &amp; Online-friendly design</span>
+            <span class="hero-meta-dot"></span>
+            <span>📍 NAU · Flagstaff · Online-friendly design</span>
           </div>
         </div>
-        <aside class="hero-card">
-          <div class="hero-card-title">In this course, you'll:</div>
-          <ul class="hero-list">
-            <li>Identify what AI is and where it can meaningfully support your work, studies, or everyday life.</li>
-            <li>Recognize opportunities and limitations of AI through hands-on, project-based examples.</li>
-            <li>Follow essential AI safety guidelines and responsible-use practices grounded in ethics and human oversight.</li>
-            <li>Use practical AI tools to save time, organize information, boost productivity, and enhance creativity.</li>
-            <li>Write clear, effective prompts using structured techniques such as vibe coding.</li>
-            <li>Detect bias, errors, and risks in AI outputs and adjust them appropriately using human-in-the-loop judgment.</li>
-            <li>Apply AI to strengthen creativity, problem‑solving, and communication skills.</li>
-            <li>Evaluate AI outputs using clear standards for accuracy, logic, and quality.</li>
-            <li>Support children’s learning using safe AI tutoring strategies that reduce overreliance on paid tutoring.</li>
-            <li>Use real cases and models from multiple fields to become a confident, purposeful AI user.</li>
-            <li>Design your own chatbot or AI agent to automate simple tasks in your personal, academic, or professional life.</li>
-          </ul>
-        </aside>
       </div>
     </section>
 
-    <!-- About -->
+    <!-- FEATURE CARDS -->
+    <div class="feature-wrapper">
+      <div class="container feature-grid">
+        <article class="feature-card">
+          <h3>Hands-On Projects</h3>
+          <p>
+            Don’t just read about AI. Build prompts, design chatbots, and create real-world workflows
+            that save you time in school, work, and everyday life.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3>Human-in-the-Loop</h3>
+          <p>
+            We focus on the <em>human</em> side of AI. Learn to supervise, check, and guide AI tools so
+            they extend—not replace—your judgment and critical thinking.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3>Ethical Frameworks</h3>
+          <p>
+            Understand data privacy, bias, sustainability, and academic integrity. Use AI with confidence,
+            care, and a clear conscience.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
     <section id="about">
       <div class="container">
         <h2>About ETC 599 – AI for Master Learners</h2>
         <p class="section-intro">
-          ETC 599 is a hands-on, project-based course from Northern Arizona University that helps learners build real AI literacy. Grounded in functional, ethical, rhetorical, and practical literacies, the course uses a Human-in-the-Loop approach so people remain in charge while AI supports thinking, creativity, and productivity.
+          ETC 599 is a hands-on, project-based course from Northern Arizona University that helps learners build real AI literacy.
+          Grounded in functional, ethical, rhetorical, and practical literacies, the course uses a Human-in-the-Loop approach so
+          people remain in charge while AI supports thinking, creativity, and productivity.
         </p>
         <p class="section-intro">
-          Whether you're writing a paper, planning a lesson, leading a team, running a small business, or supporting your child's homework, this course gives you the mindset and skills to use AI—and question it—responsibly.
+          Whether you're writing a paper, planning a lesson, leading a team, running a small business, or supporting your child's
+          homework, this course gives you the mindset and skills to use AI—and question it—responsibly.
         </p>
       </div>
     </section>
 
-    <!-- Learn -->
+    <!-- WHAT YOU'LL LEARN -->
     <section id="learn">
       <div class="container">
         <h2>What You'll Learn</h2>
-        <p class="section-intro">By the end of this class, you will be able to use AI and ChatGPT with confidence, caution, and creativity.</p>
+        <p class="section-intro">
+          By the end of this class, you will be able to use AI and ChatGPT with confidence, caution, and creativity.
+        </p>
         <div class="learn-grid">
           <div class="learn-card">
             <strong>Understand AI in everyday life</strong>
-            Identify what AI and generative tools like ChatGPT are, where they can genuinely help, and what their main opportunities, limits, and risks are across school, work, and home.
+            Identify what AI and generative tools like ChatGPT are, where they can genuinely help, and what
+            their main opportunities, limits, and risks are across school, work, and home.
           </div>
           <div class="learn-card">
             <strong>Use AI safely and ethically</strong>
-            Apply core AI policies, ethics, and safety guidelines—including privacy, bias, sustainability, and academic integrity—using a Human-in-the-Loop mindset.
+            Apply core AI policies, ethics, and safety guidelines—including privacy, bias, sustainability,
+            and academic integrity—using a Human-in-the-Loop mindset.
           </div>
           <div class="learn-card">
             <strong>Work smarter with AI tools</strong>
-            Use practical AI tools to save time, organize information, generate ideas, and support collaboration and learning without outsourcing your judgment.
+            Use practical AI tools to save time, organize information, generate ideas, and support collaboration
+            and learning without outsourcing your judgment.
           </div>
           <div class="learn-card">
             <strong>Think and prompt critically</strong>
-            Write clear, effective prompts using techniques like vibe coding; evaluate AI outputs for accuracy, logic, quality, and ethical alignment; and adjust when the AI gets it wrong.
+            Write clear, effective prompts using techniques like vibe coding; evaluate AI outputs for accuracy,
+            logic, quality, and ethical alignment; and adjust when the AI gets it wrong.
           </div>
           <div class="learn-card">
             <strong>Support others &amp; build simple agents</strong>
-            Guide children, students, or colleagues in safe AI use, and design simple AI agents, chatbots, and automations that streamline routine tasks in classrooms, homes, or workplaces.
+            Guide children, students, or colleagues in safe AI use, and design simple AI agents, chatbots,
+            and automations that streamline routine tasks in classrooms, homes, or workplaces.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Who -->
+    <!-- WHO IT'S FOR -->
     <section id="who">
       <div class="container">
         <h2>Who Is This Course For?</h2>
-        <p class="section-intro">This course is designed for anyone who wants AI to be useful, ethical, and understandable—not overwhelming.</p>
+        <p class="section-intro">
+          This course is designed for anyone who wants AI to be useful, ethical, and understandable—not overwhelming.
+        </p>
         <div class="pill-row">
-          <span class="pill">Undergraduate &amp; graduate students</span>
+          <span class="pill">Graduate students &amp; lifelong learners</span>
           <span class="pill">Classroom teachers &amp; higher-ed instructors</span>
           <span class="pill">Parents supporting kids' learning</span>
           <span class="pill">Instructional designers &amp; trainers</span>
           <span class="pill">Professionals &amp; small business owners</span>
           <span class="pill">Leaders curious (and cautious) about AI</span>
-          <span class="pill">Anyone who wants to "use AI the right way"</span>
+          <span class="pill">Anyone who wants to “use AI the right way”</span>
         </div>
       </div>
     </section>
 
-    <!-- Modules -->
+    <!-- MODULES -->
     <section id="modules">
       <div class="container">
         <h2>Course Modules</h2>
-        <p class="section-intro">The course is structured as four connected, workshop-style modules that move from foundations to real-world implementation.</p>
+        <p class="section-intro">
+          The course is structured as four connected, workshop-style modules that move from foundations to real-world implementation.
+        </p>
         <div class="modules-grid">
           <article class="module-card">
             <div class="module-tag">Module 1</div>
@@ -725,7 +791,7 @@
       </div>
     </section>
 
-    <!-- Instructor -->
+    <!-- INSTRUCTOR -->
     <section id="instructor">
       <div class="container">
         <h2>Your Instructor</h2>
@@ -733,11 +799,17 @@
           <div class="avatar">T</div>
           <div>
             <div class="instructor-name">Dr. Chih-Hsiung Tu</div>
-            <div class="instructor-role">Professor of Educational Technology · College of Education · Northern Arizona University</div>
-            <p class="section-intro" style="margin-bottom:0.75rem;">
-              Dr. Tu specializes in online learning, communities of inquiry, and AI literacy in education. He is passionate about helping learners at every level work with AI tools in ways that are ethical, human-centered, and deeply practical.
+            <div class="instructor-role">
+              Professor of Educational Technology · College of Education · Northern Arizona University
+            </div>
+            <p class="section-intro" style="margin-bottom:0.8rem;">
+              Dr. Tu specializes in online learning, communities of inquiry, and AI literacy in education. He is passionate about
+              helping learners at every level work with AI tools in ways that are ethical, human-centered, and deeply practical.
             </p>
-            <p class="instructor-contact">Questions about the course? Email <a href="mailto:Chih-Hsiung.Tu@nau.edu">Chih-Hsiung.Tu@nau.edu</a>.</p>
+            <p class="instructor-contact">
+              Questions about the course? Email
+              <a href="mailto:Chih-Hsiung.Tu@nau.edu">Chih-Hsiung.Tu@nau.edu</a>.
+            </p>
           </div>
         </div>
       </div>
@@ -750,38 +822,57 @@
         <div class="faq-grid">
           <div class="faq-item">
             <div class="faq-q">Do I need a technical or programming background?</div>
-            <div class="faq-a">No. The course is designed for everyday learners. Curiosity and a willingness to experiment are more important than technical skills.</div>
+            <div class="faq-a">
+              No. The course is designed for everyday learners. Curiosity and a willingness to experiment are
+              more important than technical skills.
+            </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Is this only for teachers?</div>
-            <div class="faq-a">No. While educators will find it especially relevant, the course is open to students, professionals, parents, and community members who want to use AI thoughtfully.</div>
+            <div class="faq-a">
+              No. While educators will find it especially relevant, the course is open to graduate learners,
+              professionals, parents, and community members who want to use AI thoughtfully.
+            </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">What if I'm cautious or nervous about AI?</div>
-            <div class="faq-a">That is exactly who this course is for. We take concerns seriously and focus on safety, ethics, and human-in-the-loop decision-making at every step.</div>
+            <div class="faq-a">
+              That is exactly who this course is for. We take concerns seriously and focus on safety, ethics,
+              and human-in-the-loop decision-making at every step.
+            </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Will I actually build something?</div>
-            <div class="faq-a">Yes. You will design prompts, create small AI-supported projects, and prototype simple agents or chatbots that fit your real context.</div>
+            <div class="faq-a">
+              Yes. You will design prompts, create small AI-supported projects, and prototype simple agents
+              or chatbots that fit your real context.
+            </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Can non-NAU learners participate?</div>
-            <div class="faq-a">Yes. Interested learners can explore enrolling as non-degree-seeking students through NAU's admissions options.</div>
+            <div class="faq-a">
+              Yes. Interested learners can explore enrolling as non-degree-seeking students through NAU Admissions.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Enroll -->
+    <!-- ENROLL -->
     <section id="enroll">
       <div class="container">
-        <h2>Ready to Become an AI-Confident Master Learner?</h2>
+        <h2>Ready to become an AI-confident master learner?</h2>
         <p class="section-intro">
-          If you want AI to support your life without taking it over, ETC 599 is designed for you. Learn to work with AI tools responsibly, creatively, and confidently—while keeping the human firmly in the loop.
+          If you want AI to support your life without taking it over, ETC 599 is designed for you. Learn to work with AI
+          tools responsibly, creatively, and confidently—while keeping the human firmly in the loop.
         </p>
         <div class="enroll-actions">
-          <button class="btn-gold">Join the Interest List</button>
-          <p class="enroll-note">Interested non-NAU learners can learn more about enrolling as a non-degree student through NAU Admissions.</p>
+          <a href="mailto:Chih-Hsiung.Tu@nau.edu?subject=ETC599%20Interest%20List" class="btn-gold">
+            Join the Interest List
+          </a>
+          <p class="enroll-note">
+            Interested non-NAU learners can learn more about enrolling as a non-degree student through NAU Admissions.
+          </p>
         </div>
       </div>
     </section>
@@ -789,22 +880,8 @@
 
   <footer>
     <div class="container">
-      &copy; <!-- -->2026 Northern Arizona University · ETC 599 – AI for Master Learners · College of Education
+      &copy; 2026 Nesma Nasr &amp; Northern Arizona University · ETC 599 – AI for Master Learners · College of Education
     </div>
   </footer>
-
-  <script>
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId.length > 1) {
-          e.preventDefault();
-          document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
 </body>
-
 </html>
